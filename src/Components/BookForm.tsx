@@ -1,6 +1,7 @@
 // src/components/BookForm.tsx
 import React, { useRef } from 'react';
 import { book } from '../types/types';
+import '../styles/BookForm.scss';
 
 interface BookFormProps {
   onSubmit: (book: book) => void;
