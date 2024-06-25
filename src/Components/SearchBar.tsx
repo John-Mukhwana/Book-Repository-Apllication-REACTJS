@@ -16,7 +16,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
 
   return (
     <>
-     <h2>Search Your Favourite Book Here!</h2>
+     <h2>Search Here For Your Favourite Book!</h2>
     <div className= 'searchBar'>
       <div className='search'>
       <input
