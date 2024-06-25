@@ -8,6 +8,14 @@ form{
     gap: 1rem ;
     margin-top: 20px;
     margin-bottom: 20px;
+    width: 100%;
+   
+    .input{
+        border: 1px solid hwb(285 0% 95%);
+        border-radius: 5px;
+        height: 5vh;
+        width: 20vw;
+        
 
-
+    }
 }

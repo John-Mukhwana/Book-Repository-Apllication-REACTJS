@@ -3,6 +3,7 @@
 .searchBar{
 
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
     margin-top: 20px;
@@ -13,4 +14,5 @@
     background-color: hsl(127, 84%, 36%);
     border-radius: 5px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    
 }

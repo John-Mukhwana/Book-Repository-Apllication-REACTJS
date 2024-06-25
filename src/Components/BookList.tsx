@@ -77,8 +77,10 @@ const BookList: React.FC<BookListProps> = ({ books, onEdit, onDelete }) => {
                   />
                 </td>
                 <td>
+                  <div className='tableButtons'>
                   <button onClick={() => handleSaveClick(book.id)}>Save</button>
                   <button onClick={handleCancelClick}>Cancel</button>
+                  </div>
                 </td>
               </>
             ) : (
@@ -87,9 +89,12 @@ const BookList: React.FC<BookListProps> = ({ books, onEdit, onDelete }) => {
                 <td>{book.author}</td>
                 <td>{book.year}</td>
                 <td>
+                  <div className='tableButtons'>
                   <button onClick={() => handleEditClick(book)}>Edit</button>
                   <button onClick={() => onDelete(book.id)}>Delete</button>
+                  </div>
                 </td>
+                
               </>
             )}
           </tr>

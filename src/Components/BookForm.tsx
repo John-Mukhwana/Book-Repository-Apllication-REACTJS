@@ -33,10 +33,10 @@ const BookForm: React.FC<BookFormProps> = ({ onSubmit }) => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <input type="text" placeholder="Title" ref={titleRef} required />
-      <input type="text" placeholder="Author" ref={authorRef} required />
-      <input type="number" placeholder="Year" ref={yearRef} required />
-      <button type="submit">Add Book</button>
+      <input type="text" className='input' placeholder="Title" ref={titleRef} required />
+      <input type="text" className='input' placeholder="Author" ref={authorRef} required />
+      <input type="number" className='input' placeholder="Year" ref={yearRef} required />
+      <button  className='inputBtn' type="submit">Add Book</button>
     </form>
   );
 };

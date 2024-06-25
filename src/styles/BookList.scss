@@ -1,9 +1,35 @@
 
 .BookList{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+    display: grid;
+    // flex-wrap: wrap;
+    justify-content: center;
     margin-top: 20px;
-    border: 1px solid #f71212;
+    margin-bottom: 40px;
+    
+
+    table {
+        border-collapse: collapse;
+        width: 40rem;
+   
+      
+      
+      th, td {
+        border: 3px solid hsl(105, 86%, 43%);
+        padding: 8px;
+        text-align: center;
+        .tableButtons{
+            display: flex;
+            justify-content: space-between;
+            gap: 1rem;
+            
+          }
+        
+      }
+      th {
+        background-color: transparent;
+      }
+     
+    }
+      
 
 }
