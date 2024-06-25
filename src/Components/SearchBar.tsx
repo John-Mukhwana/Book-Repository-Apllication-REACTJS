@@ -15,6 +15,8 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
   };
 
   return (
+    <>
+     <h2>Search Your Favourite Book Here!</h2>
     <div className= 'searchBar'>
       <div className='search'>
       <input
@@ -24,11 +26,12 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
         onChange={(e) => setQuery(e.target.value)}
       />
       </div>
-      <div>
+      <div className='searchBtn'>
       <button onClick={handleSearch}>Search</button>
       </div>
       
     </div>
+    </>
   );
 };
 

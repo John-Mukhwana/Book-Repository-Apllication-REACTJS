@@ -14,5 +14,30 @@
     background-color: hsl(127, 84%, 36%);
     border-radius: 5px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+
+    input[type="text"] {
+        border: 1px solid transparent; // Red border
+        padding: 8px;
+        width: 80%; // Adjust as needed
+        border-radius: 4px;
+        font-size: 16px;
+    }
+    .searchBtn button{
+        border: none;
+        border-radius: 4px;
+        margin-right: 10px;
+        cursor: pointer;
+        font-size: 16px;
+        //how to add hover
+        &:hover{
+            background-color: hwb(125 1% 94%);
+            color: white;
+        }
+    }
     
+    
+}
+
+h2{
+    color: #c1e813;
 }
