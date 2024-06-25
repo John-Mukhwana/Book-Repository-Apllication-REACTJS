@@ -54,7 +54,7 @@ const App: React.FC = () => {
   return (
     <>
     <section className='App'>
-      <h1>Book Repository</h1>
+      <h1> Book Repository</h1>
       <SearchBar onSearch={(query) => setSearchQuery(query)} />
       <BookForm onSubmit={handleAddBook} />
       <BookList

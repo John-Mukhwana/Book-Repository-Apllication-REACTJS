@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      book-repository-application:
+        specifier: 'link:'
+        version: 'link:'
       react:
         specifier: ^18.3.1
         version: 18.3.1
