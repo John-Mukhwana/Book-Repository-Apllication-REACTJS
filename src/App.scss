@@ -1,0 +1,30 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: hsl(0, 0%, 3%);
+  margin: 0;
+  padding: 20px;
+}
+
+
+//app.tsx scss
+ .App{
+    width:100%;
+    top: 0;
+    margin-top: 0;
+    display: grid;
+    // align-items: center;
+    // justify-content: center;
+    height: 100vh;
+    background-color: hsl(0, 0%, 100%);
+    font-family: Arial, sans-serif;
+    color: #333;
+    border: 1px solid #f71212;
+}
