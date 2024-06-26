@@ -1,0 +1,11 @@
+#things to ignore
+
+node_modules
+.bin
+*.log
+*.log.*
+*.log-*
+.yaml
+*.yaml
+.json
+
