@@ -1,9 +1,14 @@
-// schema.ts
-import { integer, pgTable, serial, text, varchar } from 'drizzle-orm/pg-core';
+// src/schema.ts
+import { pgTable, serial, text, integer, primaryKey } from "drizzle-orm/pg-core";
 
-export const books = pgTable('books', {
-  id: serial('id').primaryKey(),
-  title: varchar('title').notNull(),
-  author: varchar('author').notNull(),
-  year: integer('year').notNull(),
+// Books table
+export const BooksTable = pgTable("books", {
+  id: serial("id").primaryKey(),
+  title: text("title").notNull(),
+  author: text("author").notNull(),
+  year: integer("year").notNull(),
 });
+
+// Types
+export type TIBook = typeof BooksTable.$inferInsert;
+export type TSBook = typeof BooksTable.$inferSelect;
