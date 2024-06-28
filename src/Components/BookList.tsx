@@ -219,13 +219,14 @@ import axios from 'axios';
 import { book } from '../types/types';
 import '../styles/BookList.scss';
 
+
 interface BookListProps {
   books: book[];
   onEdit: (id: number, updatedBook: book) => void;
   onDelete: (id: number) => void;
 }
 
-const BookList: React.FC<BookListProps> = ({ books, onEdit, onDelete }) => {
+const BookList: React.FC<BookListProps> = ({ books }) => {
   const [editBookId, setEditBookId] = useState<number | null>(null);
   const [editedBook, setEditedBook] = useState<book | null>(null);
 
@@ -242,8 +243,10 @@ const BookList: React.FC<BookListProps> = ({ books, onEdit, onDelete }) => {
   const handleSaveClick = async (id: number) => {
     if (editedBook) {
       try {
-        const response = await axios.put(`http://localhost:5000/api/books/${id}`, editedBook);
-        onEdit(id, response.data);
+        console.log(editedBook);
+         await axios.put(`http://localhost:5000/api/books/${id}`, editedBook);
+        // onEdit(id, response.data);
+        console.log(editedBook)
         setEditBookId(null);
         setEditedBook(null);
       } catch (error) {
@@ -254,8 +257,9 @@ const BookList: React.FC<BookListProps> = ({ books, onEdit, onDelete }) => {
 
   const handleDeleteClick = async (id: number) => {
     try {
+      console.log(id)
       await axios.delete(`http://localhost:5000/api/books/${id}`);
-      onDelete(id);
+      // onDelete(id);
     } catch (error) {
       console.error('Failed to delete book:', error);
     }

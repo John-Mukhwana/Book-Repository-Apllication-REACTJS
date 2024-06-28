@@ -50,7 +50,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
   const handleSearch = () => {
     onSearch(query);
   };
-
+ 
   return (
     <>
       <h2>Search Here For Your Favourite Book!</h2>

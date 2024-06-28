@@ -147,7 +147,7 @@ const App: React.FC = () => {
   const filteredBooks = books.filter((book:book) =>
     book.title.toLowerCase().includes(searchQuery.toLowerCase())
   );
-
+  console.log(filteredBooks);
   return (
     <>
       <section className='App'>
@@ -162,6 +162,7 @@ const App: React.FC = () => {
       </section>
     </>
   );
+ 
 };
 
 export default App;
