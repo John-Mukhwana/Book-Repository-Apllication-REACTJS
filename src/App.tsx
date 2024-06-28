@@ -150,7 +150,7 @@ const App: React.FC = () => {
 
   return (
     <>
-      <section className='App'>
+      <section className='App'  style={{ backgroundImage: 'url("src/assets/book.jpg")' }}>
         <h1>Book Repository</h1>
         <SearchBar onSearch={(query) => setSearchQuery(query)} />
         <BookForm onSubmit={handleAddBook} />
