@@ -1,9 +1,157 @@
+// // src/App.tsx
+// import React, { useState, useReducer, useEffect } from 'react';
+// import BookForm from './Components/BookForm';
+// import BookList from './Components/BookList';
+// import SearchBar from './Components/SearchBar';
+// import { useLocalStorage } from './Hooks/useLocalStorage';
+// import { book } from './types/types';
+// import './App.scss';
+
+// const bookReducer = (state: book[], action: any) => {
+//   switch (action.type) {
+//     case 'ADD_BOOK':
+//       return [...state, action.book];
+//     case 'EDIT_BOOK':
+//       return state.map((book) =>
+//         book.id === action.id ? { ...book, ...action.updatedBook } : book
+//       );
+//     case 'DELETE_BOOK':
+//       return state.filter((book) => book.id !== action.id);
+//     default:
+//       return state;
+//   }
+// };
+
+// const App: React.FC = () => {
+//   const [books, dispatch] = useReducer(bookReducer, []);
+//   const [searchQuery, setSearchQuery] = useState('');
+//   const [localBooks, setLocalBooks] = useLocalStorage<book[]>('books', []);
+
+//   useEffect(() => {
+//     dispatch({ type: 'LOAD_BOOKS', books: localBooks });
+//   }, [localBooks]);
+
+//   useEffect(() => {
+//     setLocalBooks(books);
+//   }, [books, setLocalBooks]);
+
+//   const handleAddBook = (newBook: book) => {
+//     dispatch({ type: 'ADD_BOOK', book: newBook });
+//   };
+
+//   const handleEditBook = (id: number, updatedBook: book) => {
+//     dispatch({ type: 'EDIT_BOOK', id, updatedBook });
+//   };
+
+//   const handleDeleteBook = (id: number) => {
+//     dispatch({ type: 'DELETE_BOOK', id });
+//   };
+
+//   const filteredBooks = books.filter((book) =>
+//     book.title.toLowerCase().includes(searchQuery.toLowerCase())
+//   );
+
+//   return (
+//     <>
+//     <section className='App'>
+//       <h1> Book Repository</h1>
+//       <SearchBar onSearch={(query) => setSearchQuery(query)} />
+//       <BookForm onSubmit={handleAddBook} />
+//       <BookList
+//         books={filteredBooks}
+//         onEdit={handleEditBook}
+//         onDelete={handleDeleteBook}
+//       />
+//       </section>
+//     </>
+//   );
+// };
+
+// export default App;
+
+// import React, { useState, useReducer, useEffect } from 'react';
+// import axios from 'axios';
+// import BookForm from './Components/BookForm';
+// import BookList from './Components/BookList';
+// import SearchBar from './Components/SearchBar';
+// import { book } from './types/types';
+// import './App.scss';
+
+// const bookReducer = (state: book[], action: any) => {
+//   switch (action.type) {
+//     case 'ADD_BOOK':
+//       return [...state, action.book];
+//     case 'EDIT_BOOK':
+//       return state.map((book) =>
+//         book.id === action.id ? { ...book, ...action.updatedBook } : book
+//       );
+//     case 'DELETE_BOOK':
+//       return state.filter((book) => book.id !== action.id);
+//     case 'LOAD_BOOKS':
+//       return action.books;
+//     default:
+//       return state;
+//   }
+// };
+
+// const App: React.FC = () => {
+//   const [books, dispatch] = useReducer(bookReducer, []);
+//   const [searchQuery, setSearchQuery] = useState('');
+
+//   useEffect(() => {
+//     const fetchBooks = async () => {
+//       try {
+//         const response = await axios.get('http://localhost:5000/api/books');
+//         const fetchedBooks = response.data;
+//         dispatch({ type: 'LOAD_BOOKS', books: fetchedBooks });
+//       } catch (error) {
+//         console.error('Failed to fetch books:', error);
+//       }
+//     };
+
+//     fetchBooks();
+//   }, []);
+
+//   const handleAddBook = (newBook: book) => {
+//     dispatch({ type: 'ADD_BOOK', book: newBook });
+//   };
+
+//   const handleEditBook = (id: number, updatedBook: book) => {
+//     dispatch({ type: 'EDIT_BOOK', id, updatedBook });
+//   };
+
+//   const handleDeleteBook = (id: number) => {
+//     dispatch({ type: 'DELETE_BOOK', id });
+//   };
+
+//   const filteredBooks = books.filter((book:book) =>
+//     book.title.toLowerCase().includes(searchQuery.toLowerCase())
+//   );
+
+//   return (
+//     <>
+//       <section className='App'>
+//         <h1>Book Repository</h1>
+//         <SearchBar onSearch={(query) => setSearchQuery(query)} />
+//         <BookForm onSubmit={handleAddBook} />
+//         <BookList
+//           books={filteredBooks}
+//           onEdit={handleEditBook}
+//           onDelete={handleDeleteBook}
+//         />
+//       </section>
+//     </>
+//   );
+// };
+
+// export default App;
+
 // src/App.tsx
 import React, { useState, useReducer, useEffect } from 'react';
+import axios from 'axios';
 import BookForm from './Components/BookForm';
 import BookList from './Components/BookList';
 import SearchBar from './Components/SearchBar';
-import { useLocalStorage } from './Hooks/useLocalStorage';
 import { book } from './types/types';
 import './App.scss';
 
@@ -17,6 +165,8 @@ const bookReducer = (state: book[], action: any) => {
       );
     case 'DELETE_BOOK':
       return state.filter((book) => book.id !== action.id);
+    case 'LOAD_BOOKS':
+      return action.books;
     default:
       return state;
   }
@@ -25,47 +175,68 @@ const bookReducer = (state: book[], action: any) => {
 const App: React.FC = () => {
   const [books, dispatch] = useReducer(bookReducer, []);
   const [searchQuery, setSearchQuery] = useState('');
-  const [localBooks, setLocalBooks] = useLocalStorage<book[]>('books', []);
 
   useEffect(() => {
-    dispatch({ type: 'LOAD_BOOKS', books: localBooks });
-  }, [localBooks]);
+    const fetchBooks = async () => {
+      try {
+        const response = await axios.get('http://localhost:5000/api/books');
+        const fetchedBooks = response.data;
+        dispatch({ type: 'LOAD_BOOKS', books: fetchedBooks });
+      } catch (error) {
+        console.error('Failed to fetch books:', error);
+      }
+    };
 
-  useEffect(() => {
-    setLocalBooks(books);
-  }, [books, setLocalBooks]);
+    fetchBooks();
+  }, []);
 
-  const handleAddBook = (newBook: book) => {
-    dispatch({ type: 'ADD_BOOK', book: newBook });
+   const handleAddBook = async (newBook: book) => {
+    try {
+      const response = await axios.post('http://localhost:5000/api/books', newBook);
+      console.log(newBook);
+      dispatch({ type: 'ADD_BOOK', book: response.data });
+    } catch (error) {
+      console.error('Failed to add book:', error);
+    }
   };
 
-  const handleEditBook = (id: number, updatedBook: book) => {
-    dispatch({ type: 'EDIT_BOOK', id, updatedBook });
+  const handleEditBook = async (id: number, updatedBook: book) => {
+    try {
+      const response = await axios.put(`http://localhost:5000/api/books/${id}`, updatedBook);
+      dispatch({ type: 'EDIT_BOOK', id, updatedBook: response.data });
+    } catch (error) {
+      console.error('Failed to edit book:', error);
+    }
   };
 
-  const handleDeleteBook = (id: number) => {
-    dispatch({ type: 'DELETE_BOOK', id });
+  const handleDeleteBook = async (id: number) => {
+    try {
+      console.log(id);
+      await axios.delete(`http://localhost:5000/api/books/${id}`);
+      dispatch({ type: 'DELETE_BOOK', id });
+    } catch (error) {
+      console.error('Failed to delete book:', error);
+    }
   };
 
-  const filteredBooks = books.filter((book) =>
+  const filteredBooks = books.filter((book:book) =>
     book.title.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
   return (
     <>
-    <section className='App'>
-      <h1> Book Repository</h1>
-      <SearchBar onSearch={(query) => setSearchQuery(query)} />
-      <BookForm onSubmit={handleAddBook} />
-      <BookList
-        books={filteredBooks}
-        onEdit={handleEditBook}
-        onDelete={handleDeleteBook}
-      />
+      <section className='App'>
+        <h1>Book Repository</h1>
+        <SearchBar onSearch={(query) => setSearchQuery(query)} />
+        <BookForm onSubmit={handleAddBook} />
+        <BookList
+          books={filteredBooks}
+          onEdit={handleEditBook}
+          onDelete={handleDeleteBook}
+        />
       </section>
     </>
   );
 };
 
 export default App;
-

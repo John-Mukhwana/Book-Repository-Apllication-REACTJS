@@ -5,26 +5,26 @@ Accept: application/json
 ###
 
 # Get a single book by ID
-GET http://localhost:PORT/api/books/1
+GET http://localhost:5000/api/books/2
 Accept: application/json
 
 ###
 
 # Create a new book
-POST http://localhost:5000/api/book
+POST http://localhost:5000/api/books
 Content-Type: application/json
 
 {  
-  "id": 1,
-  "title": "The Great Gatsby",
-  "author": "F. Scott Fitzgerald",
-  "year": 1925
+   "id": 3,
+  "title": "The Blossoms Of Savannah",
+  "author": "Henry Ole Kulet",
+  "year": 2008
 }
 
 ###
 
 # Update an existing book by ID
-PUT http://localhost:PORT/api/books/1
+PUT http://localhost:5000/api/books/1
 Content-Type: application/json
 
 {
@@ -36,7 +36,7 @@ Content-Type: application/json
 ###
 
 # Delete a book by ID
-DELETE http://localhost:PORT/api/books/1
+DELETE http://localhost:500/api/books/1
 Accept: application/json
 
 ###

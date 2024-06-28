@@ -61,10 +61,12 @@ import { trimTrailingSlash } from 'hono/trailing-slash';
 import { timeout } from 'hono/timeout';
 import { HTTPException } from 'hono/http-exception';
 import { prometheus } from '@hono/prometheus';
+import {cors} from 'hono/cors'
 
 import { bookRouter } from './Book/Book.router';
 
 const app = new Hono().basePath('/api');
+app.use('/*', cors())
 
 const customTimeoutException = () =>
   new HTTPException(408, {
