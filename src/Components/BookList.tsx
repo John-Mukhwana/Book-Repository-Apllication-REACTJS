@@ -244,7 +244,7 @@ const BookList: React.FC<BookListProps> = ({ books }) => {
     if (editedBook) {
       try {
         console.log(editedBook);
-         await axios.put(`http://localhost:5000/api/books/${id}`, editedBook);
+         await axios.put(`https://book-repository-backend-1.onrender.com/${id}`, editedBook);
         // onEdit(id, response.data);
         console.log(editedBook)
         setEditBookId(null);
@@ -259,7 +259,7 @@ const BookList: React.FC<BookListProps> = ({ books }) => {
   const handleDeleteClick = async (id: number) => {
     try {
       console.log(id)
-      await axios.delete(`http://localhost:5000/api/books/${id}`);
+      await axios.delete(`https://book-repository-backend-1.onrender.com/${id}`);
       // onDelete(id);
       window.location.reload();
     } catch (error) {

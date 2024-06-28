@@ -104,7 +104,7 @@ const App: React.FC = () => {
   useEffect(() => {
     const fetchBooks = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/books');
+        const response = await axios.get('https://book-repository-backend-1.onrender.com');
         const fetchedBooks = response.data;
         dispatch({ type: 'LOAD_BOOKS', books: fetchedBooks });
       } catch (error) {
@@ -117,7 +117,7 @@ const App: React.FC = () => {
 
    const handleAddBook = async (newBook: book) => {
     try {
-      const response = await axios.post('http://localhost:5000/api/books', newBook);
+      const response = await axios.post('https://book-repository-backend-1.onrender.com', newBook);
       console.log(newBook);
       dispatch({ type: 'ADD_BOOK', book: response.data });
       window.location.reload();
@@ -128,7 +128,7 @@ const App: React.FC = () => {
 
   const handleEditBook = async (id: number, updatedBook: book) => {
     try {
-      const response = await axios.put(`http://localhost:5000/api/books/${id}`, updatedBook);
+      const response = await axios.put(`https://book-repository-backend-1.onrender.com/${id}`, updatedBook);
       dispatch({ type: 'EDIT_BOOK', id, updatedBook: response.data });
     } catch (error) {
       console.error('Failed to edit book:', error);
@@ -138,7 +138,7 @@ const App: React.FC = () => {
   const handleDeleteBook = async (id: number) => {
     try {
       console.log(id);
-      await axios.delete(`http://localhost:5000/api/books/${id}`);
+      await axios.delete(`https://book-repository-backend-1.onrender.com/${id}`);
       dispatch({ type: 'DELETE_BOOK', id });
     } catch (error) {
       console.error('Failed to delete book:', error);
