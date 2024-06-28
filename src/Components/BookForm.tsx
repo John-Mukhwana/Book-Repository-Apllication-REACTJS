@@ -17,7 +17,7 @@ const BookForm = ({ }: { onSubmit: (book: { id: number; title: string; author: s
 
     try {
       console.log(newBook)
-       await axios.post('https://book-repository-backend-1.onrender.com', newBook,{headers:{'Content-Type': 'application/json'}});
+       await axios.post('https://book-repository-backend-1.onrender.com/api', newBook,{headers:{'Content-Type': 'application/json'}});
       // onSubmit(response.data); // Use the book returned from the backend
     
       fetchBooks();
