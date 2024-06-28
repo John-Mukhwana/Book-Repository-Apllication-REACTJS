@@ -66,7 +66,13 @@ import {cors} from 'hono/cors'
 import { bookRouter } from './Book/Book.router';
 
 const app = new Hono().basePath('/api');
-app.use('/*', cors())
+// app.use('/*', cors())
+app.use('*', cors({
+  origin: 'http://localhost:5174', // Your frontend URL
+  allowMethods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowHeaders: ['Content-Type', 'Authorization'],
+}));
+
 
 const customTimeoutException = () =>
   new HTTPException(408, {
