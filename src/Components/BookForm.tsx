@@ -17,7 +17,7 @@ const BookForm = ({ }: { onSubmit: (book: { id: number; title: string; author: s
 
     try {
       console.log(newBook)
-       await axios.post('https://book-repository-backend-1.onrender.com/api', newBook,{headers:{'Content-Type': 'application/json'}});
+       await axios.post('https://book-repository-backend-1.onrender.com/api/books', newBook,{headers:{'Content-Type': 'application/json'}});
       // onSubmit(response.data); // Use the book returned from the backend
     
       fetchBooks();
@@ -33,6 +33,8 @@ const BookForm = ({ }: { onSubmit: (book: { id: number; title: string; author: s
   };
 
   return (
+    <>
+    <div> <h3>Add your Favourite Book Here</h3> </div>
     <form onSubmit={handleSubmit} className="BookForm">
       <input
         type="text"
@@ -52,8 +54,9 @@ const BookForm = ({ }: { onSubmit: (book: { id: number; title: string; author: s
         onChange={(e) => setYear(e.target.value)}
         placeholder="Year"
       />
-      <button type="submit" >Submit</button>
+      <button type="submit" >Add Book</button>
     </form>
+    </>
   );
 };
 

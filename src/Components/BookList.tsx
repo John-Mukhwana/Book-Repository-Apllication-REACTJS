@@ -276,7 +276,7 @@ const BookList: React.FC<BookListProps> = ({ books }) => {
     <section className='BookList'>
       <table>
         <thead>
-          <tr>
+          <tr className='headingtr'>
             <th>Title</th>
             <th>Author</th>
             <th>Year</th>

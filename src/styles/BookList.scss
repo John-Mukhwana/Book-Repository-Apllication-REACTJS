@@ -21,12 +21,27 @@
             display: flex;
             justify-content: space-between;
             gap: 1rem;
+            button {
+              border: 1px solid hwb(285 0% 95%);
+              border-radius: 5px;
+              height: 5vh;
+              width: 10vw;
+              cursor: pointer;
+            &:hover {
+              background-color: hsl(241, 92%, 10%); // Changes background color on hover
+              border-color: rgb(242, 237, 237); // Changes border color to match
+              color: rgb(255, 251, 10); // Optional: changes text color to white for better contrast
+          }
+        }
+
             
           }
         
       }
       th {
-        background-color: transparent;
+        background-color: hsl(105, 86%, 43%);
+        color: hsl(0, 0%, 0%);
+
       }
      
     }
