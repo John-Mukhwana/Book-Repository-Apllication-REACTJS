@@ -21,6 +21,7 @@ const BookForm = ({ }: { onSubmit: (book: { id: number; title: string; author: s
       // onSubmit(response.data); // Use the book returned from the backend
     
       fetchBooks();
+      window.location.reload();
     } catch (error) {
       console.error('Failed to add book:', error);
     }

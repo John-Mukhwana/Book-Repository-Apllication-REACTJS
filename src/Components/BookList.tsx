@@ -249,6 +249,7 @@ const BookList: React.FC<BookListProps> = ({ books }) => {
         console.log(editedBook)
         setEditBookId(null);
         setEditedBook(null);
+        window.location.reload();
       } catch (error) {
         console.error('Failed to edit book:', error);
       }
@@ -260,6 +261,7 @@ const BookList: React.FC<BookListProps> = ({ books }) => {
       console.log(id)
       await axios.delete(`http://localhost:5000/api/books/${id}`);
       // onDelete(id);
+      window.location.reload();
     } catch (error) {
       console.error('Failed to delete book:', error);
     }

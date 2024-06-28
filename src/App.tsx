@@ -120,6 +120,7 @@ const App: React.FC = () => {
       const response = await axios.post('http://localhost:5000/api/books', newBook);
       console.log(newBook);
       dispatch({ type: 'ADD_BOOK', book: response.data });
+      window.location.reload();
     } catch (error) {
       console.error('Failed to add book:', error);
     }
