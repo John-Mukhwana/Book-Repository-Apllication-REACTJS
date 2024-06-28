@@ -118,7 +118,7 @@ import axios from 'axios';
 import '../styles/BookForm.scss';
 import { fetchBooks } from '../apiClient';
 
-const BookForm = ({ onSubmit }: { onSubmit: (book: { id: number; title: string; author: string; year: number }) => void }) => {
+const BookForm = ({ }: { onSubmit: (book: { id: number; title: string; author: string; year: number }) => void }) => {
   const [title, setTitle] = useState('');
   const [author, setAuthor] = useState('');
   const [year, setYear] = useState('');
@@ -131,8 +131,9 @@ const BookForm = ({ onSubmit }: { onSubmit: (book: { id: number; title: string; 
 
     try {
       console.log(newBook)
-      const response = await axios.post('http://localhost:5000/api/books', newBook,{headers:{'Content-Type': 'application/json'}});
+       await axios.post('http://localhost:5000/api/books', newBook,{headers:{'Content-Type': 'application/json'}});
       // onSubmit(response.data); // Use the book returned from the backend
+    
       fetchBooks();
     } catch (error) {
       console.error('Failed to add book:', error);
@@ -164,7 +165,7 @@ const BookForm = ({ onSubmit }: { onSubmit: (book: { id: number; title: string; 
         onChange={(e) => setYear(e.target.value)}
         placeholder="Year"
       />
-      <button type="submit">Submit</button>
+      <button type="submit" >Submit</button>
     </form>
   );
 };
