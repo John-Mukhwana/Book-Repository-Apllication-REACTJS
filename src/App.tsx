@@ -123,6 +123,8 @@ const App: React.FC = () => {
       window.location.reload();
     } catch (error) {
       console.error('Failed to add book:', error);
+      alert('An error occurred while adding the book');
+
     }
   };
 

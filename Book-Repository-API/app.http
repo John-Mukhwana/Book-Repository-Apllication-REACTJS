@@ -1,11 +1,11 @@
 # Get all books
-GET http://localhost:5000/api/books
+GET http://localhost:5000/api/books/
 Accept: application/json
 
 ###
 
 # Get a single book by ID
-GET http://localhost:5000/api/books/2
+GET http://localhost:5000/api/books/
 Accept: application/json
 
 ###
@@ -15,7 +15,8 @@ POST http://localhost:5000/api/books
 Content-Type: application/json
 
 {  
-   "id": 3,
+ 
+ 
   "title": "The Blossoms Of Savannah",
   "author": "Henry Ole Kulet",
   "year": 2008
