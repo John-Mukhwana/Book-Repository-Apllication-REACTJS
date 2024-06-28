@@ -68,7 +68,7 @@ import { bookRouter } from './Book/Book.router';
 const app = new Hono().basePath('/api');
 // app.use('/*', cors())
 app.use('*', cors({
-  origin: 'http://localhost:5174', // Your frontend URL
+  origin: ['http://localhost:5174', 'https://book-repository-apllication-reactjs.vercel.app'], // Your frontend URL
   allowMethods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowHeaders: ['Content-Type', 'Authorization'],
 }));
